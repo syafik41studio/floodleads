@@ -1,0 +1,6 @@
+<%= simple_form_for :user_call, :url => call_path do |f| %>
+  <%= f.input :from %>
+  <%= f.input :to %>
+  <%= f.input :body, :as => :text %>
+  <%= f.submit "Call" %>
+<% end %>
