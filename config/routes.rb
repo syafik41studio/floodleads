@@ -2,7 +2,8 @@ TwilioApp::Application.routes.draw do
 
   match "/prepare_call" => "home#prepare_call", :as => :prepare_call
   match "/call" => "home#prepare_call", :as => :call
-  match "/call_handler" => "home#call_handler", :as => :call_handler
+  match "/call_handler(.:format)" => "home#call_handler", :as => :call_handler
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
