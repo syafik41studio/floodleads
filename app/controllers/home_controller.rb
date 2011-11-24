@@ -20,4 +20,8 @@ class HomeController < ApplicationController
     @user_call= UserCall.new
   end
 
+  def get_recording
+
+  end
+
 end
