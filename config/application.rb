@@ -1,13 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'yaml'
-TWILIO_CONFIG = YAML.load(File.read(File.expand_path('../twilio.yml', __FILE__)))
-
-#require 'rails/all'
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "active_resource/railtie"
-require "rails/test_unit/railtie"
+require 'rails/all'
 
 
 if defined?(Bundler)
@@ -49,6 +42,7 @@ module TwilioApp
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.assets.initialize_on_precompile = false
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

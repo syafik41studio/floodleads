@@ -1,14 +1,54 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>TwilioApp</title>
-  <%= stylesheet_link_tag "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Flood Damage Leads</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <script type="text/javascript">
+      AudioPlayer.setup("flash/player.swf", {
+        width: 160,
+        transparentpagebg: "yes"
+      });
+    </script>
+  </head>
 
-<%= yield %>
+  <body>
+    <div class="header">
+      <div class="container header">
+        <div class="logo">
+          <a href="/" title=""><%= image_tag "logo_flood_damage_leads.png"  %></a>
+        </div>
+        <div class="navigation">
+          <ul>
+            <li><a href=""><%= image_tag "nav_leads_blue.png" %></a></li>
+            <li><a href=""><%= image_tag "nav_settings_black.png" %></a></li>
+            <li><a href=""><%= image_tag "nav_billing_black.png" %></a></li>
+            <li><a href=""><%= image_tag "nav_log_out_black.png" %></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="container paper">
+        <div class="content">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
 
-</body>
+    <div class="footer">
+      <p>Copyright ©2011 Flood Damage, Inc. All Rights Reserved.</p>
+      <ul>
+        <li><a href="/privacy" title="Privacy">Privacy</a></li>
+        <li><a href="/terms" title="Terms">Terms</a></li>
+        <li><a href="/contact" title="Contact">Contact</a></li>
+      </ul>
+    </div>
+    </div>
+  </body>
 </html>

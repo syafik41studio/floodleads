@@ -9,19 +9,5 @@ class HomeController < ApplicationController
     #    )
 
   end
-
-  def call_handler
-    respond_to do |format|
-      format.xml
-    end
-  end
   
-  def prepare_call
-    @user_call= UserCall.new
-  end
-
-  def get_recording
-
-  end
-
 end

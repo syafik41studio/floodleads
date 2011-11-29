@@ -1,9 +1,8 @@
 TwilioApp::Application.routes.draw do
+  
+  devise_for :users
 
-  match "/prepare_call" => "home#prepare_call", :as => :prepare_call
-  match "/call" => "home#prepare_call", :as => :call
-  match "/call_handler(.:format)" => "home#call_handler", :as => :call_handler
-  match "/get_recording" => "home#get_recording", :as => :get_recording
+  match "/call_handler(.:format)" => "calls#call_handler", :as => :call_handler
 
 
   # The priority is based upon order of creation:
@@ -55,7 +54,7 @@ TwilioApp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#prepare_call'
+  root :to => 'calls#index'
 
   # See how all your routes lay out with "rake routes"
 

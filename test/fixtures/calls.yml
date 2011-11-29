@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  account_id: MyString
+  call_id: MyString
+  caller: MyString
+  caller_city: MyString
+  caller_state: MyString
+  caller_country: MyString
+  called: MyString
+  call_duration: MyString
+  api_version: MyString
+
+two:
+  account_id: MyString
+  call_id: MyString
+  caller: MyString
+  caller_city: MyString
+  caller_state: MyString
+  caller_country: MyString
+  called: MyString
+  call_duration: MyString
+  api_version: MyString
