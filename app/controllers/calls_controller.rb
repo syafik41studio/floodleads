@@ -10,7 +10,7 @@ class CallsController < ApplicationController
 
   def call_handler
     user = User.where("account_id = ?", params["AccountSid"]).first
-    if params[:CallStatus].eql("completed") && user
+    if params[:CallStatus].eql?("completed") && user
       call = Call.create(
         :account_id => params["AccountSid"],
         :call_id => params["CallSid"],
