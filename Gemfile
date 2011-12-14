@@ -9,6 +9,8 @@ gem 'pg'
 gem 'twilio-ruby'
 gem 'devise'
 gem 'sequel'
+gem "cancan"
+gem "carmen"
 #gem 'twilio-rb'
 
 # Gems used only for assets and not required

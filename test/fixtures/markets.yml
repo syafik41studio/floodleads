@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  city: MyString
+  state: MyString
+  max_partner: 1
+  area_code: MyString
+  setup_fee: 1.5
+
+two:
+  city: MyString
+  state: MyString
+  max_partner: 1
+  area_code: MyString
+  setup_fee: 1.5

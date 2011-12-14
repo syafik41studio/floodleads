@@ -1,0 +1,37 @@
+<div class="content">
+  <div class="container paper">
+    <img src="/images/page_heading_markets.png">
+    <div class="subnavigation">
+      <ul>
+        <li><%= link_to 'Add New Market', new_admin_market_path %></li>
+      </ul>
+    </div>
+    <table>
+      <tr>
+        <th>City</th>
+        <th>State</th>
+        <th>Current Partners</th>
+        <th>Pending Partners</th>
+        <th>Max Partners</th>
+        <th>Wait List</th>
+        <th>Qualified Leads</th>
+        <th>Area Code</th>
+        <th>Setup Fee</th>
+        <th>Revenue</th>
+        <th>Edit</th>
+      </tr>
+      <% @markets.each do |market| %>
+        <tr>
+          <td><%= market.city %></td>
+          <td><%= market.state %></td>
+          <td><%= market.max_partner %></td>
+          <td><%= market.area_code %></td>
+          <td><%= market.setup_fee %></td>
+          <td><%= link_to 'Show', admin_market_path(market) %></td>
+          <td><%= link_to 'Edit', edit_admin_market_path(market) %></td>
+          <td><%= link_to 'Destroy', admin_market_path(market), confirm: 'Are you sure?', method: :delete %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

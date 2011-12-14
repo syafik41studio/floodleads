@@ -17,28 +17,34 @@
     </script>
   </head>
 
-  <body>
+  <body id="<%= @body_class %>">
     <div class="header">
       <div class="container header">
         <div class="logo">
-          <a href="/" title=""><%#= image_tag "logo_flood_damage_leads.png"  %></a>
+          <%= link_to image_tag("logo_flood_damage_leads.png"), "/" %>
         </div>
         <div class="navigation">
           <ul>
             <li><a href=""><%#= image_tag "nav_leads_blue.png" %></a></li>
-            <li><a href=""><%= image_tag "nav_settings_black.png" %></a></li>
-            <li><a href=""><%= image_tag "nav_billing_black.png" %></a></li>
-            <li><a href=""><%= image_tag "nav_log_out_black.png" %></a></li>
+            <% if user_signed_in? %>
+              <li><a href=""><%= image_tag "nav_settings_black.png" %></a></li>
+              <li><a href=""><%= image_tag "nav_billing_black.png" %></a></li>
+              <li><a href="/calls"><%= image_tag "nav_leads_black.png" %></a></li>
+              <li><a href=""><%= image_tag "nav_how_it_works_black.png" %></a></li>
+              <li><a href=""><%= image_tag "nav_faq_black.png" %></a></li>
+              <li><%= link_to image_tag("nav_log_out_black.png"), destroy_user_session_url, :method => :delete %></li>
+            <% else %>
+              <li><%= link_to image_tag("nav_login_black.png"), new_user_session_path %></li>
+              <li><a href=""><%= image_tag "nav_how_it_works_black.png" %></a></li>
+              <li><a href=""><%= image_tag "nav_faq_black.png" %></a></li>
+              <li><%= link_to image_tag("nav_signup.png"), new_user_registration_path %></li>
+            <% end %>
           </ul>
         </div>
       </div>
     </div>
     <div class="main">
-      <div class="container paper">
-        <div class="content">
-          <%= yield %>
-        </div>
-      </div>
+      <%= yield %>
     </div>
 
     <div class="footer">

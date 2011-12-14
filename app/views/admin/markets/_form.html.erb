@@ -1,0 +1,52 @@
+<div class="content">
+  <div class="container paper">
+    <%#= image_tag "page_heading_markets.png" %>
+    <div class="subnavigation">
+      <ul>
+        <li><%= link_to "Back to list", admin_markets_path %></li>
+      </ul>
+    </div>
+    <%= form_for([:admin,@market]) do |f| %>
+      <% if @market.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@market.errors.count, "error") %> prohibited this market from being saved:</h2>
+
+          <ul>
+            <% @market.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <table class="narrow">
+        <tr>
+          <td colspan="2"><h2>Add New Market</h2></td>
+        </tr>
+        <tr>
+          <td><%= f.label :city %></td>
+          <td><%= f.text_field :city %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :state %></td>
+          <td> <%= f.select :state, Carmen::states('US') %> </td>
+        </tr>
+        <tr>
+          <td><%= f.label :max_partner %></td>
+          <td><%= f.number_field :max_partner %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :area_code %></td>
+          <td><%= f.text_field :area_code %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :setup_fee %></td>
+          <td><%= f.text_field :setup_fee %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td> <%= f.submit %></td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>

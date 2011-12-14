@@ -1,49 +1,51 @@
-<%= image_tag "page_heading_leads.png", :class => "page_heading" %>
-<div class="subnavigation">
-  <ul>
-    <li><a class="active" href="#">All</a></li>
-    <li><a href="#">Qualified</a></li>
-    <li><a href="#">Unqualified</a></li>
-    <li><a href="#">Paid</a></li>
-    <li><a href="#">Disputed</a></li>
-  </ul>
+<div class="content">
+  <%= image_tag "page_heading_leads.png", :class => "page_heading" %>
+  <div class="subnavigation">
+    <ul>
+      <li><a class="active" href="#">All</a></li>
+      <li><a href="#">Qualified</a></li>
+      <li><a href="#">Unqualified</a></li>
+      <li><a href="#">Paid</a></li>
+      <li><a href="#">Disputed</a></li>
+    </ul>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Call Timestamp</th>
+        <th>Caller</th>
+        <th>Receiver</th>
+        <th>Duration</th>
+        <th>Audio</th>
+        <th>Status</th>
+        <th>Amount</th>
+        <th>Billing Date</th>
+        <th>Dispute</th>
+        <th>Conversion</th>
+      </tr>
+    </thead>
+    <% @calls.each do |call| %>
+      <tr>
+        <td><%= call.created_at.strftime("%d/%m/%Y %I:%M %p") %></td>
+        <td><%= call.caller %></td>
+        <td><%= call.called %></td>
+        <td><%= call.call_duration %></td>
+        <td>
+          <span id="audioplayer_<%= call.id %>">Alternative content</span>
+          <script type="text/javascript">AudioPlayer.embed("audioplayer_<%= call.id %>", {soundFile: "<%= call.record_file_url %>"});</script>
+        </td>
+        <td>Qualified</td>
+        <td>$250.00</td>
+        <td>December 1, 2011</td>
+        <td><input type="checkbox"/></td>
+        <td>
+          <select>
+            <option>Select</option>
+            <option>Converted</option>
+            <option>Not Converted</option>
+          </select>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>
-<table>
-  <thead>
-    <tr>
-      <th>Call Timestamp</th>
-      <th>Caller</th>
-      <th>Receiver</th>
-      <th>Duration</th>
-      <th>Audio</th>
-      <th>Status</th>
-      <th>Amount</th>
-      <th>Billing Date</th>
-      <th>Dispute</th>
-      <th>Conversion</th>
-    </tr>
-  </thead>
-  <% @calls.each do |call| %>
-    <tr>
-      <td><%= call.created_at.strftime("%d/%m/%Y %I:%M %p") %></td>
-      <td><%= call.caller %></td>
-      <td><%= call.called %></td>
-      <td><%= call.call_duration %></td>
-      <td>
-        <span id="audioplayer_<%= call.id %>">Alternative content</span>
-        <script type="text/javascript">AudioPlayer.embed("audioplayer_<%= call.id %>", {soundFile: "<%= call.record_file_url %>"});</script>
-      </td>
-      <td>Qualified</td>
-      <td>$250.00</td>
-      <td>December 1, 2011</td>
-      <td><input type="checkbox"/></td>
-      <td>
-        <select>
-          <option>Select</option>
-          <option>Converted</option>
-          <option>Not Converted</option>
-        </select>
-      </td>
-    </tr>
-  <% end %>
-</table>

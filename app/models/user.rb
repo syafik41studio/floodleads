@@ -10,5 +10,8 @@ class User < ActiveRecord::Base
   validates :account_id, :auth_token, :presence => true
 
   has_many :calls
+  has_many :partners
+  has_many :markets, :through => :partners
+  
 
 end

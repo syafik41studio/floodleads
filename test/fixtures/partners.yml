@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  market_id: 1
+  status: MyString
+  active_at: 2011-12-14 08:30:08
+
+two:
+  user_id: 1
+  market_id: 1
+  status: MyString
+  active_at: 2011-12-14 08:30:08
