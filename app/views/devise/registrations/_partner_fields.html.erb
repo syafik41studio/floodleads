@@ -1,0 +1,7 @@
+<tr class="nested-fields">
+  <td><label>City you service</label></td>
+  <td>
+    <%= f.input :market_id, :collection => Market.all.map{|m| ["#{Carmen::state_name(m.state)}, #{m.state}", m.id]}, :include_blank => false, :label => false, :wrapper_tag => :span, :wrapper_html => {:style => "margin:0px!important"}, :input_html => {:style => "margin:0px!important;width:150px" } %>
+    &nbsp;&nbsp;&nbsp;&nbsp;  <%= link_to_remove_association "remove task", f %>
+  </td>
+</tr>

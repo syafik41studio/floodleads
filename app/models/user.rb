@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :calls
   has_many :partners
   has_many :markets, :through => :partners
+
+  accepts_nested_attributes_for :partners, :reject_if => :all_blank, :allow_destroy => true
   
 
 end

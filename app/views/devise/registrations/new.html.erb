@@ -1,19 +1,93 @@
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="inputs">
-    <%= f.input :email, :required => true, :autofocus => true %>
-    <%= f.input :password, :required => true %>
-    <%= f.input :password_confirmation, :required => true %>
-    <%= f.input :account_id, :label => "Twilio AccountId", :required => true %>
-    <%= f.input :auth_token, :label => "Twilio Auth Token",  :required => true %>
+<div class="content">
+  <div class="container paper">
+    <div class="page_block">
+      <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+        <table>
+          <tr>
+            <td colspan="3"><h2>Log In Information <span class="edit"><a href="">Edit</a></h2></td>
+          </tr>
+          <tr>
+            <td><label>Email Address</label></td>
+            <%= f.input :email, :autofocus => true, :label => false, :wrapper_tag => :td, :wrapper_html => {:style => "margin:0px!important"}, :input_html => {:style => "margin:0px!important;width:200px" } %>
+          </tr>
+          <tr>
+            <td style="width: 150px"><label>Password</label></td>
+            <%= f.input :password, :label => false, :wrapper_tag => :td, :wrapper_html => {:style => "margin:0px!important"}, :input_html => {:style => "margin:0px!important;width:200px" } %>
+          </tr>
+          <tr>
+            <td><label>Password Again</label></td>
+            <%= f.input :password_confirmation, :label => false, :wrapper_tag => :td, :wrapper_html => {:style => "margin:0px!important"}, :input_html => {:style => "margin:0px!important;width:200px" } %>
+          </tr>
+          <tr>
+            <td colspan="3"><h2>Profile Information <span class="edit"><a href="">Edit</a></h2></td>
+          </tr>
+          <tr>
+            <td><label>First Name</label></td>
+            <%= f.input :first_name, :autofocus => true, :label => false, :wrapper_tag => :td, :wrapper_html => {:style => "margin:0px!important"}, :input_html => {:style => "margin:0px!important;width:200px" } %>
+          </tr>
+          <tr>
+            <td style="width: 150px"><label>Last Name</label></td>
+            <%= f.input :last_name, :label => false, :wrapper_tag => :td, :wrapper_html => {:style => "margin:0px!important"}, :input_html => {:style => "margin:0px!important;width:200px" } %>
+          </tr>
+          <tr>
+            <td><label>Position With Company</label></td>
+            <%= f.input :position_in_company, :label => false, :wrapper_tag => :td, :wrapper_html => {:style => "margin:0px!important"}, :input_html => {:style => "margin:0px!important;width:200px" } %>
+          </tr>
+          <tr>
+            <td><label>Company Address</label></td>
+            <%= f.input :company_address, :label => false, :wrapper_tag => :td, :wrapper_html => {:style => "margin:0px!important"}, :input_html => {:style => "margin:0px!important;width:200px" } %>
+          </tr>
+          <tr>
+            <td><label>City</label></td>
+            <%= f.input :city, :label => false, :wrapper_tag => :td, :wrapper_html => {:style => "margin:0px!important"}, :input_html => {:style => "margin:0px!important;width:200px" } %>
+          </tr>
+          <tr>
+            <td><label>State</label></td>
+            <%= f.input :state, :collection => Carmen::states('US'), :include_blank => false, :label => false, :wrapper_tag => :td, :wrapper_html => {:style => "margin:0px!important"}, :input_html => {:style => "margin:0px!important;width:200px" } %>
+          </tr>
+          <tr>
+            <td><label>Postal Code</label></td>
+            <%= f.input :postal_code, :label => false, :wrapper_tag => :td, :wrapper_html => {:style => "margin:0px!important"}, :input_html => {:style => "margin:0px!important;width:200px" } %>
+          </tr>
+          <tr>
+            <td><label>Country</label></td>
+            <%= f.input :country, :collection => [["United States", "US"]], :include_blank => false, :label => false, :wrapper_tag => :td, :wrapper_html => {:style => "margin:0px!important"}, :input_html => {:style => "margin:0px!important;width:200px" } %>
+          </tr>
+          <tr>
+            <td><label>Phone Number</label></td>
+            <%= f.input :phone_number, :label => false, :wrapper_tag => :td, :wrapper_html => {:style => "margin:0px!important"}, :input_html => {:style => "margin:0px!important;width:200px" } %>
+          </tr>
+          <tr>
+            <td><label>Fax Number</label></td>
+            <%= f.input :fax_number, :label => false, :wrapper_tag => :td, :wrapper_html => {:style => "margin:0px!important"}, :input_html => {:style => "margin:0px!important;width:200px" } %>
+          </tr>
+          <tr>
+            <td colspan="3"><h2>Service Area</h2></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <table>
+                <%= f.simple_fields_for :partners do |partner| %>
+                  <%= render "partner_fields", :f => partner %>
+                <% end %>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <%= link_to_add_association 'add service', f, :partners, :render_options => { :wrapper => 'inline' } %>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td></td>
+            <td>
+              <%= f.button :submit, "Step 2 - Billing Information" %></td>
+          </tr>
+        </table>
+      </div>
+    <% end %>
   </div>
-
-  <div class="actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+</div>

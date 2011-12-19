@@ -11,6 +11,8 @@ gem 'devise'
 gem 'sequel'
 gem "cancan"
 gem "carmen"
+gem 'simple_form'
+gem "cocoon"
 #gem 'twilio-rb'
 
 # Gems used only for assets and not required
