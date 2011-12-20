@@ -10,8 +10,11 @@ class User < ActiveRecord::Base
     :first_name, :last_name, :position_in_company, :company_address, :city, :state, :postal_code, :country,
     :phone_number, :fax_number, :card_id, :card_number, :expiration_date, :cvv, :card_postal_code
 
-  validates :account_id, :auth_token, :presence => true,:if => lambda { |o| o.current_step == "billing" }
-  validates_numericality_of :card_number
+  validates :account_id, :auth_token,:card_id, :card_number, :expiration_date, :cvv,
+            :presence => true,:if => lambda { |o| o.current_step == "billing" }
+  validates :first_name,:last_name, :presence => true,:if => lambda { |o| o.current_step != "billing" }
+  validates_numericality_of :card_number,:if => lambda { |o| o.current_step == "billing" }
+  
   has_many :calls
   has_many :partners
   has_many :markets, :through => :partners

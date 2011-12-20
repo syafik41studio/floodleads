@@ -3,6 +3,16 @@
     <div class="page_block">
       <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
+         <% if resource.errors.any? %>
+          <div id="errorExplanation">
+            <h2><%= pluralize(resource.errors.count, "error") %> prohibited this record from being saved:</h2>
+            <ul>
+              <% resource.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
         <table>
           <tr>
             <td colspan="3"><h2>Log In Information <span class="edit"><a href="">Edit</a></h2></td>

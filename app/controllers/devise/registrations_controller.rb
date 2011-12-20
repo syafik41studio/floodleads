@@ -6,7 +6,7 @@ class Devise::RegistrationsController < ApplicationController
   # GET /resource/sign_up
   def new    
     resource = build_resource({})
-    resource.current_step = session[:signup_step]
+    resource.current_step = "signup"
     respond_with_navigational(resource){ render_with_scope :new }
   end
 
@@ -80,6 +80,7 @@ class Devise::RegistrationsController < ApplicationController
 
   def billing
     @resource = current_user
+    current_user.current_step = "billing"
   end
 
   def create_billing
