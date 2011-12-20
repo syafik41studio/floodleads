@@ -4,10 +4,14 @@ TwilioApp::Application.routes.draw do
     root :to => 'markets#index'
     resources :markets 
   end
-
-  devise_for :users
+  
+  devise_for :users do
+    match "/users/billing" => "devise/registrations#billing", :as => :user_billing
+    put "/create_billing" => "devise/registrations#create_billing", :as => :create_billing
+  end
   resources :calls
   match "/call_handler(.:format)" => "calls#call_handler", :as => :call_handler
+  #match "/billing" => "devise/registrations#billing", :as => :user_billing
 
 
   # The priority is based upon order of creation:

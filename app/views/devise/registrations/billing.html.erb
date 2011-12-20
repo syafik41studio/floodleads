@@ -1,0 +1,66 @@
+<div class="content">
+  <div class="container paper">
+    <div class="page_block">
+      <%= form_for current_user, :url => create_billing_path do |f|%>
+        <% if current_user.errors.any? %>
+          <div id="errorExplanation">
+            <h2><%= pluralize(current_user.errors.count, "error") %> prohibited this record from being saved:</h2>
+            <ul>
+              <% current_user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <table>
+          <tr>
+            <td colspan="3"><h2>Billing Information</h2></td>
+          </tr>
+          <tr>
+            <td><label>Name on Card</label></td>
+            <td><%= f.text_field "card_id"  %></td>
+          </tr>
+          <tr>
+            <td><label>Card Number</label></td>
+            <td><%= f.text_field "card_number"  %></td>
+          </tr>
+          <tr>
+            <td><label>Expiration Date</label></td>
+            <td><%= f.date_select :expiration_date,:discard_day => true %></td>
+          </tr>
+          <tr>
+            <td><label>CVV</label></td>
+            <td><%= f.text_field :cvv %></td>
+          </tr>
+          <tr>
+
+            <td><label>Postal Code</label></td>
+            <td><%= f.text_field :card_postal_code %></td>
+          </tr>
+          <td>Your card will be charged $400.00.</td>
+          <td><input type="submit" value="Sign Up Now"></td>
+        </table>
+      <% end %>
+    </div>
+    <div>
+      <p>You chose to receive leads for the following markets:</p>
+      <table>
+        <tr>
+          <td>Cleveland</td>
+          <td>Setup Fee: $200</td>
+        </tr>
+
+        <tr>
+          <td>Columbus</td>
+          <td>Setup Fee: $200</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Total: $400</td>
+
+        </tr>
+      </table>
+      <p>We will charge your card $250 for each qualified lead we send to you.</p>
+    </div>
+  </div>
+</div>
