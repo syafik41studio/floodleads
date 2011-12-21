@@ -85,10 +85,24 @@ class Devise::RegistrationsController < ApplicationController
 
   def create_billing
     if current_user.update_attributes(params[:user])
+      create_twilio_subaccount(current_user.full_name)
       redirect_to root_path
     else
       render :action => :billing
     end
+  end
+
+  private
+
+  def create_twilio_subaccount(full_name)
+    client = @client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
+    ## creating the subaccount on twilio
+    client.accounts.create({:FriendlyName => full_name})
+    ## get the available numbers
+    account = client.account
+    numbers = account.available_phone_numbers.get('US').local.list({:AreaCode => 510})
+    ## attaching the phone number into subaccounts
+    account.incoming_phone_numbers.create(:phone_number => numbers[0].phone_number)
   end
 
   protected

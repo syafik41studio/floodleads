@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :partners, :reject_if => :all_blank, :allow_destroy => true
 
+  def full_name
+    first_name+" "+last_name
+  end
+
   def current_step
     @current_step || steps.first
   end
