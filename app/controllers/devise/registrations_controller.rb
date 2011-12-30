@@ -97,11 +97,12 @@ class Devise::RegistrationsController < ApplicationController
   def create_twilio_subaccount(full_name)
     client = @client = Twilio::REST::Client.new(ACCOUNT_SID, AUTH_TOKEN)
     ## creating the subaccount on twilio
-    client.accounts.create({:FriendlyName => full_name})
+    account = client.accounts.create({:FriendlyName => full_name})
     ## get the available numbers
-    account = client.account
-    numbers = account.available_phone_numbers.get('US').local.list({:AreaCode => 510})
+    #account = client.account
+    numbers = account.available_phone_numbers.get('US').local.list({:AreaCode => current_user.postal_code})
     ## attaching the phone number into subaccounts
+    current_user.update_attributes(:account_id => account.sid, :auth_token => account.auth_token)
     account.incoming_phone_numbers.create(:phone_number => numbers[0].phone_number)
   end
 

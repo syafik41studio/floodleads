@@ -1,18 +1,22 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+
+  extend FriendlyId
+  friendly_id :company_name, use: :slugged
+  
   attr_writer :current_step
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :account_id, :auth_token,
-    :first_name, :last_name, :position_in_company, :company_address, :city, :state, :postal_code, :country,
+    :first_name, :last_name, :position_in_company,:company_name, :company_address, :city, :state, :postal_code, :country,
     :phone_number, :fax_number, :card_id, :card_number, :expiration_date, :cvv, :card_postal_code
 
-  validates :account_id, :auth_token,:card_id, :card_number, :expiration_date, :cvv,
+  validates :company_name,:account_id, :auth_token,:card_id, :card_number, :expiration_date, :cvv,
             :presence => true,:if => lambda { |o| o.current_step == "billing" }
-  validates :first_name,:last_name, :presence => true,:if => lambda { |o| o.current_step != "billing" }
+  validates :first_name, :presence => true,:if => lambda { |o| o.current_step != "billing" }
   validates_numericality_of :card_number,:if => lambda { |o| o.current_step == "billing" }
   
   has_many :calls

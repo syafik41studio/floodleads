@@ -29,5 +29,27 @@ class CallsController < ApplicationController
     end
   end
 
+  def company_call_handler
+    user = User.find(params[:id])
+
+    if params[:CallStatus].eql?("completed") && user
+      Call.create(
+        :account_id => params["AccountSid"],
+        :call_id => params["CallSid"],
+        :caller => params["Caller"],
+        :caller_city => params["CallerCity"],
+        :caller_country => params["CallerCountry"],
+        :caller_state => params["CallerState"],
+        :called  => params["Called"],
+        :call_duration => params["CallDuration"],
+        :api_version => params["ApiVersion"],
+        :user_id => user.blank? ? nil : user.id
+      )
+    end
+    respond_to do |format|
+      format.xml
+    end
+  end
+
   
 end

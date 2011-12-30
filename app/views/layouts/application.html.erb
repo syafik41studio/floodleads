@@ -29,7 +29,7 @@
             <% if user_signed_in? %>
               <li><a href=""><%= image_tag "nav_settings_black.png" %></a></li>
               <li><a href=""><%= image_tag "nav_billing_black.png" %></a></li>
-              <li><a href="/calls"><%= image_tag "nav_leads_black.png" %></a></li>
+              <li><a href="<%= company_call_handler_path(current_user) %>"><%= image_tag "nav_leads_black.png" %></a></li>
               <li><a href=""><%= image_tag "nav_how_it_works_black.png" %></a></li>
               <li><a href=""><%= image_tag "nav_faq_black.png" %></a></li>
               <li><%= link_to image_tag("nav_log_out_black.png"), destroy_user_session_url, :method => :delete %></li>

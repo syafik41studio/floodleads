@@ -11,6 +11,7 @@ TwilioApp::Application.routes.draw do
   end
   resources :calls
   match "/call_handler(.:format)" => "calls#call_handler", :as => :call_handler
+  match "/:id/call-handler" => "calls#company_call_handler", :as => :company_call_handler
   #match "/billing" => "devise/registrations#billing", :as => :user_billing
 
 

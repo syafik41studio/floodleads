@@ -5,14 +5,13 @@ gem 'rails', '3.1.1'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+gem 'pg','0.11.0'
 gem 'twilio-ruby'
 gem 'devise'
-gem 'sequel'
-gem "cancan"
-gem "carmen"
-gem 'simple_form'
 gem "cocoon"
+gem "carmen"
+
+gem "friendly_id", "~> 4.0.0"
 #gem 'twilio-rb'
 
 # Gems used only for assets and not required
